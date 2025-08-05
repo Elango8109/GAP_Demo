@@ -1,0 +1,46 @@
+name: Manual Trigger Workflow
+
+on: 
+   workflow_dispatch:
+     inputs:
+       environment:
+         description : 'select environment to deply'
+         required: true
+         default: 'staging'
+         type: choice
+         options:
+            -development
+            -production
+
+            
+      run_tests:
+        description : 'Run tests before deploy'
+        required : false
+        default : 'true'
+        type : choice
+        options:
+          -true
+          -false
+            
+
+
+jobs:
+  build:
+      runs-on: ubuntu-lastest
+      steps:
+         - name: print build
+           run: echo 'build'
+
+  test:
+      runs-on: windows-lastest
+      steps:
+         - name: print test -chrome
+           run : echo 'test chrome'
+         - name: print test -edge
+           run : echo 'test edge' 
+
+  deploy:
+       runs-on: ubuntu-latest
+       steps:
+          - name: print deploy
+            run : echo 'deploy'
