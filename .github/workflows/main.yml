@@ -1,8 +1,8 @@
 name: First Workflow
 
 on: 
-   schedule:
-       - cron: '* * * * *'
+   issues:
+       types: opened
 
 jobs:
   build:
