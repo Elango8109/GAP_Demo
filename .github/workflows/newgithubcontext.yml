@@ -1,0 +1,29 @@
+name: GitHub Context new 
+ 
+on:
+  workflow_dispatch
+ 
+jobs:
+  github_context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Info about GitHub
+        run: |
+          echo "Repository details: ${{ github.repository }}"
+          echo "Repo ID: ${{ github.repository_id }}"
+          echo "GitHub repo owner: ${{ github.repository_owner }}"
+          echo "GitHub token: ${{ github.token }}"
+          echo "Workflow name: ${{ github.workflow }}"
+          echo "GitHub actor: ${{ github.actor }}"
+          echo "GitHub ref: ${{ github.ref }}"
+          echo "GitHub trigger event: ${{ github.event_name }}"
+          echo "GitHub action: ${{ github.action }}"
+          echo "GitHub action path: ${{ github.action_path }}"
+          echo "GitHub action ref: ${{ github.action_ref }}"
+ 
+      - name: Example - Run only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploy step only runs on main branch"
+      - if : github.event_name =='pull_request"
+        run: echo "trigger the workflow"       
+        
