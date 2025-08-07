@@ -1,0 +1,19 @@
+name : Varaible Example
+
+on :
+   workflow_dispatch
+
+jobs:
+  show_varaible:
+    runs-on: ubuntu-latest
+    env:
+        MY_NAME : Java
+        GREETING : "Hello from GitHub Action"
+
+    steps:
+       - name : print varaible 
+         run  :
+            echo "Name :$MY_NAME"
+            echo "Message:$GREETING"
+            
+        
